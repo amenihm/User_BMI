@@ -42,21 +42,22 @@ public class MainActivity extends AppCompatActivity {
 
         if (!weightStr.isEmpty() && !heightStr.isEmpty()) {
             float weight = Float.parseFloat(weightStr);
-            float height = Float.parseFloat(heightStr) / 100;
+            float height = Float.parseFloat(heightStr) ;
 
             float bmi = weight / (height * height);
             tvBMI.setText(String.format("BMI: %.2f", bmi));
 
             String interpretation;
-            if (bmi < 18.5) {
+           if (bmi < 18.5) {
                 interpretation = "Underweight";
-            } else if (bmi < 24.9) {
+            } else if (bmi>18.5 && bmi<24.9) {
                 interpretation = "Normal weight";
-            } else if (bmi < 29.9) {
+            } else if (bmi>25 && bmi<29.9) {
                 interpretation = "Overweight";
             } else {
                 interpretation = "Obesity";
             }
+
             tvInterpretation.setText(interpretation);
         } else {
             tvBMI.setText("Please enter valid values.");
